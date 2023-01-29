@@ -96,8 +96,24 @@ namespace KNN {
 
     // Measure the 
     float KNNClassifier::measureAccuracy(){
-        // STUB
-        return 0.8;
+        float percentage;
+        int numberOfTruePredictions = 0;
+
+        cout.setf(ios::fixed);
+        cout.setf(ios::showpoint);
+        cout.precision(2);
+        for (int i = 0; i < testSet.size(); i++) {
+            if (testSet[i]->value == predict(testSet[i]->coordinates))
+                numberOfTruePredictions++;
+            system("clear");
+            cout << "Measuring accuracy! " 
+                << ((static_cast<float>(i) / testSet.size()) * 100)
+                << "%" << endl;
+        }
+
+        percentage = (static_cast<float>(numberOfTruePredictions) / testSet.size()) * 100;
+        cout << "Accuracy is " << percentage << "%" << endl;
+        return percentage;
     }
 
 
@@ -105,16 +121,20 @@ namespace KNN {
     // Basicly finds the next index that doesn't exists in
     // neighboursIndexes to start iteration from
     int KNNClassifier::findNonExistIndex(const vector<int>& neighboursIndexes) {
+        int index;
         if (!neighboursIndexes.size())
-            return 0;
-        for (int i = 0; i < trainSet.size(); i++) {
-            bool exists = false;
-            for (int j = 0; j < neighboursIndexes.size(); j++)
-                if (i == neighboursIndexes[j])
-                    exists = true;
-            if (!exists)
-                return i;
-        }
-        return -1;
+            index = 0;
+        else
+            for (int i = 0; i < trainSet.size(); i++) {
+                bool exists = false;
+                for (int j = 0; j < neighboursIndexes.size(); j++)
+                    if (i == neighboursIndexes[j])
+                        exists = true;
+                if (!exists){
+                    index = i;
+                    break;
+                }
+            }
+        return index;
     }
 }

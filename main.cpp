@@ -11,6 +11,7 @@ int main() {
     model.readCSV("input.csv");
 
     model.fit();
+    model.measureAccuracy();
 
     vector<float> coordinates;
     coordinates.push_back(3);
