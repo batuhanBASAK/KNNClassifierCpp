@@ -64,7 +64,8 @@ namespace KNN {
     }
 
     // Method to predict the value of point p
-    int KNNClassifier::predict(const Point& p){
+    int KNNClassifier::predict(const vector<float>& coordinates){
+        Point p(coordinates, 0, coordinates.size());
         // Int array list to hold nearest neighbours' indexes
         vector<int> neighboursIndexes;
         // nearest neighbours' point list
@@ -114,5 +115,6 @@ namespace KNN {
             if (!exists)
                 return i;
         }
+        return -1;
     }
 }

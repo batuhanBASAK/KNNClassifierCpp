@@ -25,7 +25,7 @@ namespace KNN {
         void fit();
 
         // Method to predict the value of point p
-        int predict(const Point& p);
+        int predict(const vector<float>& coordinates);
 
         // Measure the 
         float measureAccuracy();

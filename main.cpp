@@ -12,7 +12,12 @@ int main() {
 
     model.fit();
 
+    vector<float> coordinates;
+    coordinates.push_back(3);
+    coordinates.push_back(2);
+    coordinates.push_back(4);
 
+    cout << model.predict(coordinates) << endl;
 
     return 0;
 }
