@@ -1,4 +1,4 @@
-all: clear clean compile run
+all: clear clean compile run 
 
 clear:
 	@clear
