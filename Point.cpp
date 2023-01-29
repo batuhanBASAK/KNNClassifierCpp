@@ -1,4 +1,5 @@
 #include "Point.h"
+#include <cstdlib>
 
 namespace KNN {
 
@@ -19,8 +20,22 @@ namespace KNN {
             this->coordinates.push_back(c[i]);
     }
 
+    Point::Point(const float arr[], int value, int dimension) {
+        if (dimension < 1) {
+            cout << "dimension cannot be 0 or a negative number!!!" << endl;
+            exit(EXIT_FAILURE);
+        }
+        this->dimension = dimension;
+        for (int i = 0; i < dimension; i++) {
+            this->coordinates.push_back(arr[i]);
+        }
+        this->value = value;
+    }
+
+
+
     // Returns the euclidean distance between *this and Point p.
-    float Point::distance(const Point& p){
+    float Point::distance(const Point& p) const {
         float ans = 0.0f;
         for (int i = 0; i < this->dimension; i++)
             ans += pow(this->coordinates[i] - p.coordinates[i], 2);

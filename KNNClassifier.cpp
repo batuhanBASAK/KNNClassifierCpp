@@ -75,8 +75,7 @@ namespace KNN {
     }
 
     // Method to predict the value of point p
-    int KNNClassifier::predict(const vector<float>& coordinates){
-        Point p(coordinates, 0, coordinates.size());
+    int KNNClassifier::predict(const Point& p){
         // Int array list to hold nearest neighbours' indexes
         vector<int> neighboursIndexes;
         // nearest neighbours' point list
@@ -107,6 +106,20 @@ namespace KNN {
         return prediction;
     }
 
+    // Method to predict the value of point p
+    int KNNClassifier::predict(const vector<float>& coordinates){
+        Point p(coordinates, 0, coordinates.size());
+        return predict(p);
+    }
+
+
+    int KNNClassifier::predict(const float coordinates[], int dimension){
+
+        Point p(coordinates, 0, dimension);
+        return predict(p);
+    }
+
+
     // Measure the 
     float KNNClassifier::measureAccuracy(){
         float percentage;
@@ -116,14 +129,17 @@ namespace KNN {
         cout.setf(ios::showpoint);
         cout.precision(2);
         for (int i = 0; i < testSet.size(); i++) {
-            if (testSet[i]->value == predict(testSet[i]->coordinates))
-                numberOfTruePredictions++;
+            if (testSet[i]->value == predict(testSet[i]->coordinates)) {
+               numberOfTruePredictions++;
+            } 
             system("clear");
             cout << "Measuring accuracy! " 
                 << ((static_cast<float>(i) / testSet.size()) * 100)
                 << "%" << endl;
         }
 
+        cout << "numberOfTruePredictions = " << numberOfTruePredictions
+            << ", total test set size = " << testSet.size() << endl;
         percentage = (static_cast<float>(numberOfTruePredictions) / testSet.size()) * 100;
         cout << "Accuracy is " << percentage << "%" << endl;
         return percentage;

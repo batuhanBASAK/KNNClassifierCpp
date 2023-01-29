@@ -13,12 +13,19 @@ int main() {
     model.fit();
     model.measureAccuracy();
 
-//    vector<float> coordinates;
-//    coordinates.push_back(49.40);
-//    coordinates.push_back(73);
-//    coordinates.push_back(64.30);
 
-//    cout << model.predict(coordinates) << endl;
+
+    /*
+     * Some points to test
+     * for point(46.50, 7.60, 98.60) expected value is 3
+     * for point(11.40, 42.00, 0.50) expected value is 1
+     */
+    float c1[] = {46.50f, 7.6f, 98.6f};
+    float c2[] = {11.4f, 42.0f, 0.5f};
+
+    cout << model.predict(c1, 3) << endl;
+    cout << model.predict(c2, 3) << endl;
+
 
     return 0;
 }

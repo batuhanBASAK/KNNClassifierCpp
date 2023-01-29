@@ -18,8 +18,10 @@ namespace KNN {
         // and dimension information of Point
         Point(const std::vector<float>& c, int val, int d);
 
+        Point(const float arr[], int value, int dimension);
+
         // Returns the euclidean distance between *this and Point p.
-        float distance(const Point& p);
+        float distance(const Point& p) const;
 
         // Coodinates
         std::vector<float> coordinates;
