@@ -20,6 +20,17 @@ namespace KNN {
         this->testSize= 1.0f - this->trainSize;
     }
 
+
+    // Destructor method
+    KNNClassifier::~KNNClassifier(){
+        for(int i = 0; i < points.size(); i++) {
+            delete points[i];
+        }
+    }
+
+
+
+
     // Method to read points from csv file that name is given
     void KNNClassifier::readCSV(string filename){
         ifstream infile;

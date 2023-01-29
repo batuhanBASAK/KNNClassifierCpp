@@ -18,6 +18,9 @@ namespace KNN {
         // Constructor method takes neighbours count
         KNNClassifier(int neighbours, float trainSize);
 
+        // Destructor method
+        ~KNNClassifier();
+
         // Method to read points from csv file that name is given
         void readCSV(string filename);
 
