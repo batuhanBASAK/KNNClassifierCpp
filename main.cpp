@@ -13,12 +13,12 @@ int main() {
     model.fit();
     model.measureAccuracy();
 
-    vector<float> coordinates;
-    coordinates.push_back(3);
-    coordinates.push_back(2);
-    coordinates.push_back(4);
+//    vector<float> coordinates;
+//    coordinates.push_back(49.40);
+//    coordinates.push_back(73);
+//    coordinates.push_back(64.30);
 
-    cout << model.predict(coordinates) << endl;
+//    cout << model.predict(coordinates) << endl;
 
     return 0;
 }

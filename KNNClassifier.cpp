@@ -82,11 +82,13 @@ namespace KNN {
         // nearest neighbours' point list
         vector<Point*> neighbourPoints;
 
+        int minDistanceIndex;
+        float minDistance, tmpDistance;
         for (int i = 0; neighboursIndexes.size() < neighbours; i++) {
-            int minDistanceIndex = findNonExistIndex(neighboursIndexes);
-            float minDistance = p.distance(*testSet[minDistanceIndex]);
+            minDistanceIndex = findNonExistIndex(neighboursIndexes);
+            minDistance = p.distance(*testSet[minDistanceIndex]);
             for (int j = 0; j < trainSet.size(); j++) {
-                float tmpDistance = p.distance(*testSet[j]);
+                tmpDistance = p.distance(*testSet[j]);
                 if (tmpDistance < minDistance) {
                     minDistanceIndex = j;
                     minDistance = tmpDistance;
